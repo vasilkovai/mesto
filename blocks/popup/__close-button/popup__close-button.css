@@ -3,16 +3,16 @@
   background-color: transparent;
   background-position: center;
   background-size: cover;
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   padding: 0;
   border: none;
   outline: none;
   cursor: pointer;
   transition: opacity .1s linear;
   position: absolute;
-  right: -40px;
-  top: -40px;
+  right: -46px;
+  top: -46px;
 }
 
 .popup__close-button:hover {
@@ -21,9 +21,9 @@
 
 @media screen and (max-width: 879px) {
   .popup__close-button {
-    width: 26px;
-    height: 26px;
-    right: 0px;
-    margin-bottom: 13px;
+    width: 36px;
+    height: 36px;
+    right: 0;
+    top: -50px;
   }
 }

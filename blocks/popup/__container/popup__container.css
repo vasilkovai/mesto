@@ -2,6 +2,9 @@
   position: relative;
   max-width: 430px;
   min-height: 330px;
+  top: 195px;
+  left: 50%;
+  transform: translateX(-50%);
   padding: 34px 36px 37px;
   background: #FFFFFF;
   box-sizing: border-box;
@@ -12,7 +15,7 @@
   .popup__container {
     max-width: 282px;
     min-height: 322px;
-    margin: 123px auto 0;
     padding: 25px 22px;
+    top: 123px;
   }
 }
