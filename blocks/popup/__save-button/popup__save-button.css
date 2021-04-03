@@ -13,6 +13,7 @@
   height: 50px;
   border-radius: 2px;
   border: none;
+  outline: none;
   cursor: pointer;
   transition: opacity .1s linear;
 }

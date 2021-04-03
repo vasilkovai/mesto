@@ -1,16 +1,17 @@
-.element__like {
+.card__like {
   background-image: url(../../../images/like.svg);
   background-color: transparent;
   padding: 0;
   margin: 0;
   background-size: cover;
   border: none;
+  outline: none;
   width: 22px;
   height: 19px;
   cursor: pointer;
   transition: opacity .1s linear;
 }
 
-.element__like:hover {
+.card__like:hover {
   opacity: .5;
 }

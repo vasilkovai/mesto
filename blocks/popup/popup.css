@@ -6,5 +6,10 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, .5);
   color: #000;
-  display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  transition: opacity .4s linear, visibility .4s linear ;
+  opacity: 0;
 }
