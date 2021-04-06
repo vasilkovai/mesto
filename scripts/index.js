@@ -111,12 +111,13 @@ function createCard(item) {
     evt.target.classList.toggle('card__like_active');
   });
   
+  //open img
   cardImage.addEventListener('click', () => imgClickHandler(item));
 
   return cardElement;
 }
 
-//open img
+//open popup img
 function imgClickHandler(item) {
   imgPopupImage.src = item.link;
   imgPopupImage.alt = item.name;
