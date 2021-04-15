@@ -29,11 +29,6 @@ const initialCards = [
 const openEditBtn = document.querySelector('.profile__edit-button');
 const openAddBtn = document.querySelector('.profile__add-button');
 
-//close buttons
-const closeEditBtn = document.querySelector('.popup__close-button_edit');
-const closeAddBtn = document.querySelector('.popup__close-button_add');
-const closeImgBtn = document.querySelector('.popup__close-button_img');
-
 //popup
 const popupEdit = document.querySelector('.popup_edit_profile');
 const popupAdd = document.querySelector('.popup_add_card');
@@ -64,6 +59,8 @@ const cardTemplate = document.querySelector('.card-template').content.querySelec
 //open popup
 function openPopup(popup){
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closeEsc);
+  document.addEventListener('click', closeOverlay);
 };
 
 openEditBtn.addEventListener('click', () => {
@@ -76,11 +73,23 @@ openAddBtn.addEventListener('click', () => openPopup(popupAdd));
 //close popup
 function closePopup(popup){
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeEsc);
+  document.removeEventListener('click', closeOverlay);
 };
 
-closeEditBtn.addEventListener('click', () => closePopup(popupEdit));
-closeAddBtn.addEventListener('click', () => closePopup(popupAdd));
-closeImgBtn.addEventListener('click', () => closePopup(popupImg));
+function closeEsc(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+}
+
+function closeOverlay(evt) {
+  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button')) {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup) 
+    }
+};
 
 //edit profile
 function formSubmitHandler (evt) {
@@ -143,8 +152,7 @@ const addCardHandler = evt => {
 
   cardItem.prepend(createCard(item));
 
-  cardNameInput.value = '';
-  cardLinkInput.value = '';
+  addForm.reset();
 
   closePopup(popupAdd);
 }

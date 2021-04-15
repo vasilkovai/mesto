@@ -7,7 +7,7 @@
   text-align: center;
   color: #FFFFFF;
   background: #000000;
-  margin-top: 48px;
+  margin-top: 32px;
   padding: 0;
   width: 358px;
   height: 50px;
@@ -28,6 +28,6 @@
     height: 46px;
     font-size: 14px;
     line-height: 17px;
-    margin-top: 45px;
+    margin-top: 29px;
   }
 }
