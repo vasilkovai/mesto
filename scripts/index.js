@@ -68,7 +68,16 @@ openEditBtn.addEventListener('click', () => {
   aboutInput.value = aboutProfile.textContent;
   openPopup(popupEdit)
 });
-openAddBtn.addEventListener('click', () => openPopup(popupAdd));
+
+openAddBtn.addEventListener('click', () => {
+  const submitButtonAdd = document.querySelector('.popup__save-button_add_card');
+  if (cardNameInput.value.length === 0 && cardLinkInput.value.length === 0) {
+    submitButtonAdd.setAttribute('disabled', true);
+    submitButtonAdd.classList.add('popup__save-button_inactive');
+  }
+
+  openPopup(popupAdd)
+});
 
 //close popup
 function closePopup(popup){
@@ -145,9 +154,9 @@ initialCards.reverse().forEach((cardElement) => {
 });
 
 //add new cards
-const addCardHandler = evt => {
+const addCardHandler = (evt) => {
   evt.preventDefault();
-
+  
   const item = {name: cardNameInput.value, link: cardLinkInput.value};
 
   cardItem.prepend(createCard(item));
