@@ -1,8 +1,10 @@
 import {openPopup} from './index.js'
+import {
+  popupImg,
+  imgPopupImage,
+  imgPopupTitle,
+} from './constants.js'
 
-const popupImg = document.querySelector('.popup-img');
-const imgPopupImage = document.querySelector('.popup-img__image');
-const imgPopupTitle = document.querySelector('.popup-img__title');
 
 export class Card {
   constructor(data, cardSelector) {
@@ -13,7 +15,7 @@ export class Card {
 
   _getTemplate() {
     const cardElement = document
-    .querySelector('.card-template')
+    .querySelector(this._cardSelector)
     .content
     .querySelector('.card')
     .cloneNode(true);
@@ -25,12 +27,16 @@ export class Card {
     this._element = this._getTemplate();
     this._setEventListeners();
 
-    this._element.querySelector('.card__image').src = this._link;
-    this._element.querySelector('.card__image').alt = this._name;
-    this._element.querySelector('.card__title').textContent = this._name;
+    const cardImage = this._element.querySelector('.card__image');
+    const cardTitle = this._element.querySelector('.card__title');  
+    
+    cardImage.src = this._link;
+    cardImage.alt = this._name;
+    cardTitle.textContent = this._name;
 
     return this._element;
   }
+
   //open popup picture
   _handlePreviewPicture() {
     imgPopupImage.src = this._link;

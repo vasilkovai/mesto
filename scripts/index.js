@@ -1,37 +1,22 @@
 import { initialCards } from './initialCards.js'
 import { Card } from './Card.js'
 import { FormValidator } from './FormValidator.js';
-
-//open buttons
-const openEditBtn = document.querySelector('.profile__edit-button');
-const openAddBtn = document.querySelector('.profile__add-button');
-
-//popup
-const popupEdit = document.querySelector('.popup_edit_profile');
-const popupAdd = document.querySelector('.popup_add_card');
-
-//forms
-const editForm = document.querySelector('.popup__form_edit');
-const addForm = document.querySelector('.popup__form_add');
-
-//content
-const nameProfile = document.querySelector('.profile__name');
-const aboutProfile = document.querySelector('.profile__about');
-const cardItem = document.querySelector('.cards');
-
-//input
-const nameInput = document.querySelector('.popup__input_text_name');
-const aboutInput = document.querySelector('.popup__input_text_about');
-const cardNameInput = document.querySelector('.popup__input_card_name');
-const cardLinkInput = document.querySelector('.popup__input_card_link');
-
-//valid 
-const validationElements = {
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__save-button',
-    inactiveButtonClass: 'popup__save-button_inactive',
-    errorClass: 'popup__input-error_active',
-};
+import {
+  openEditBtn,
+  openAddBtn,
+  popupEdit,
+  popupAdd,
+  editForm,
+  addForm,
+  nameProfile,
+  aboutProfile,
+  cardItem,
+  nameInput,
+  aboutInput,
+  cardNameInput,
+  cardLinkInput,
+  validationElements
+} from './constants.js';
 
 //form validation
 const editFormValidation = new FormValidator(validationElements, '.popup__form_edit')
@@ -57,6 +42,7 @@ openEditBtn.addEventListener('click', () => {
 
 openAddBtn.addEventListener('click', () => {
   const submitButtonAdd = document.querySelector('.popup__save-button_add_card');
+
   if (cardNameInput.value.length === 0 && cardLinkInput.value.length === 0) {
     submitButtonAdd.setAttribute('disabled', true);
     submitButtonAdd.classList.add('popup__save-button_inactive');

@@ -20,12 +20,13 @@ export class FormValidator {
     const errorElement = this._form.querySelector(`#${inputElement.id}-error`);
     errorElement.classList.remove(this._errorClass);
     errorElement.textContent = '';
-}
+  }
 
   //form validation conditions
   _chekInputValidity(inputElement) {
     const isInputNotValid = !inputElement.validity.valid;
     const errorMessage = inputElement.validationMessage;
+
     if (isInputNotValid) {
       this._showInputError(inputElement, errorMessage);
     } else {
