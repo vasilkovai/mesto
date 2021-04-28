@@ -48,6 +48,14 @@ export class FormValidator {
     }
   };
 
+  //reset error message
+  resetErrorMessage() {
+    this._inputList.forEach(inputElement => {
+      this._hideInputError(inputElement);
+      });
+      this._toggleButtonState();
+  }
+
   //listener for elements in form
   _setEventListeners() {
     this._form.addEventListener('submit', (evt) => {

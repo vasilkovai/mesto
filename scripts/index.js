@@ -15,7 +15,10 @@ import {
   aboutInput,
   cardNameInput,
   cardLinkInput,
-  validationElements
+  validationElements,
+  popupImg,
+  imgPopupImage,
+  imgPopupTitle,
 } from './constants.js';
 
 //form validation
@@ -32,11 +35,12 @@ function openPopup(popup){
   document.addEventListener('click', closeOverlay);
 };
 
-export {openPopup}
-
 openEditBtn.addEventListener('click', () => {
   nameInput.value = nameProfile.textContent;
   aboutInput.value = aboutProfile.textContent;
+
+  editFormValidation.resetErrorMessage();
+
   openPopup(popupEdit)
 });
 
@@ -84,7 +88,7 @@ function formSubmitHandler (evt) {
 
 //cards container
 function getCard(item) {
-  const card = new Card(item, '.card-template');
+  const card = new Card(item, '.card-template', handlePreviewPicture);
 
   return card.generateCard(item);
 }
@@ -94,6 +98,15 @@ initialCards.forEach((item) => {
 
   cardItem.append(cardElement);
 });
+
+//open popup picture
+function handlePreviewPicture(link, name) {
+  imgPopupImage.src = link;
+  imgPopupImage.alt = name;
+  imgPopupTitle.textContent = name;
+  
+  openPopup(popupImg);
+}
 
 //add new cards
 const addCardHandler = (evt) => {
@@ -112,3 +125,4 @@ const addCardHandler = (evt) => {
 editForm.addEventListener('submit', formSubmitHandler);
 addForm.addEventListener('submit', addCardHandler);
 
+export {openPopup, handlePreviewPicture}
