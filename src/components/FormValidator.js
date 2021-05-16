@@ -6,6 +6,7 @@ export default class FormValidator {
     this._errorClass = errorClass;
     this._form = document.querySelector(form);
     this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
+    this._submitButton = this._form.querySelector(this._submitButtonSelector);
   }
 
   //show error
@@ -36,20 +37,19 @@ export default class FormValidator {
 
   //save button conditions
   _toggleButtonState() {
-    const buttonElement = this._form.querySelector(this._submitButtonSelector);
     const hasNotValidInput = this._inputList.some((inputElement) => !inputElement.validity.valid);
     
     if (hasNotValidInput) {
-      buttonElement.setAttribute('disabled', true);
-      buttonElement.classList.add(this._inactiveButtonClass);
+      this._submitButton.setAttribute('disabled', true);
+      this._submitButton.classList.add(this._inactiveButtonClass);
     } else {
-      buttonElement.removeAttribute('disabled');
-      buttonElement.classList.remove(this._inactiveButtonClass);
+      this._submitButton.removeAttribute('disabled');
+      this._submitButton.classList.remove(this._inactiveButtonClass);
     }
   };
 
   //reset error message
-  resetErrorMessage() {
+  resetValidation() {
     this._inputList.forEach(inputElement => {
       this._hideInputError(inputElement);
       });

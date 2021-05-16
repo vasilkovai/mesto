@@ -9,15 +9,10 @@ import {
   initialCards,
   openEditBtn,
   openAddBtn,
-  popupEdit,
-  popupAdd,
   cardItem,
   nameInput,
   aboutInput,
-  cardNameInput,
-  cardLinkInput,
   validationElements,
-  popupImg,
 } from '../utils/constants.js';
 
 // form validation
@@ -28,7 +23,7 @@ const addFormValidation = new FormValidator(validationElements, '.popup__form_ad
 addFormValidation.enableValidation();
 
 // open popup picture
-const popupWithImage = new PopupWithImage(popupImg);
+const popupWithImage = new PopupWithImage('.popup-img');
 popupWithImage.setEventListeners();
 
 function handlePreviewPicture(link, name) {
@@ -53,25 +48,20 @@ const cardsList = new Section({
 
 cardsList.renderItems();
 
-
 // add card
 const addCardSubmitHandler = (item) => {
 
-  cardItem.prepend(createCard(item));
+  cardsList.prependItem(createCard(item));
 
   addCardPopup.close();
 }
 
-const addCardPopup = new PopupWithForm(popupAdd, addCardSubmitHandler)
+const addCardPopup = new PopupWithForm('.popup_add_card', addCardSubmitHandler)
 addCardPopup.setEventListeners();
 
 openAddBtn.addEventListener('click', () => {
-  const submitButtonAdd = document.querySelector('.popup__save-button_add_card');
 
-  if (cardNameInput.value.length === 0 && cardLinkInput.value.length === 0) {
-    submitButtonAdd.setAttribute('disabled', true);
-    submitButtonAdd.classList.add('popup__save-button_inactive');
-  }
+  addFormValidation.resetValidation();
 
   addCardPopup.open();
 });
@@ -85,7 +75,7 @@ const editProfileSubmitHandler = (user) => {
   editProfilePopup.close();
 }
 
-const editProfilePopup = new PopupWithForm(popupEdit, editProfileSubmitHandler)
+const editProfilePopup = new PopupWithForm('.popup_edit_profile', editProfileSubmitHandler)
 editProfilePopup.setEventListeners();
 
 openEditBtn.addEventListener('click', () => {
@@ -94,7 +84,7 @@ openEditBtn.addEventListener('click', () => {
   nameInput.value = profileInfo.name;
   aboutInput.value = profileInfo.about;
 
-  editFormValidation.resetErrorMessage();
+  editFormValidation.resetValidation();
 
   editProfilePopup.open()
 });
