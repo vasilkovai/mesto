@@ -1,6 +1,14 @@
 .popup__field {
-  margin: 0 0 35px 0;
+  margin: 35px 0 0 0;
   display: block;
   box-sizing: border-box;
   position: relative;
+}
+
+.popup__field:first-child {
+  margin-top: 54px;
+}
+
+.popup__field:nth-child(2) {
+  margin-bottom: 10px;
 }
