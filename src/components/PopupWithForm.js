@@ -30,4 +30,8 @@ export default class PopupWithForm extends Popup{
     this._form.reset();
     super.close();
   }
+
+  setSubmitHandler(submitHandler) {
+    this._submitHandler = submitHandler;
+  }
 }

@@ -35,11 +35,14 @@ export default class FormValidator {
     }
   };
 
+  _hasNotValidInput() {
+    return this._inputList.some((inputElement) => !inputElement.validity.valid);
+  }
+
+
   //save button conditions
   _toggleButtonState() {
-    const hasNotValidInput = this._inputList.some((inputElement) => !inputElement.validity.valid);
-    
-    if (hasNotValidInput) {
+    if (this._hasNotValidInput()) {
       this._submitButton.setAttribute('disabled', true);
       this._submitButton.classList.add(this._inactiveButtonClass);
     } else {
@@ -47,6 +50,8 @@ export default class FormValidator {
       this._submitButton.classList.remove(this._inactiveButtonClass);
     }
   };
+
+
 
   //reset error message
   resetValidation() {

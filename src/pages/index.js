@@ -3,7 +3,6 @@ import Api from '../components/Api.js';
 import Card from '../components/Card.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
-import PopupWithConfirm from '../components/PopupWithConfirm.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import FormValidator from '../components/FormValidator.js';
@@ -80,11 +79,11 @@ const deleteConfirmSubmitHandler = (card) => {
   })
   .catch(error => console.log(error))
   }
-  popupWithConfirm.setConfirmSubmitHandler(deleteCardHandler)
+  popupWithConfirm.setSubmitHandler(deleteCardHandler)
   popupWithConfirm.open()
 }
 
-const popupWithConfirm = new PopupWithConfirm('.popup_confirm');
+const popupWithConfirm = new PopupWithForm('.popup_confirm');
 popupWithConfirm.setEventListeners()
 
 // open popup picture
@@ -97,7 +96,14 @@ function handlePreviewPicture(link, name) {
 
 // cards container
 const createCard = (item) => {
-  const card = new Card(item, '.card-template', handlePreviewPicture, handleLikeIcon, deleteConfirmSubmitHandler);
+  const card = new Card(
+    item, 
+    '.card-template', 
+    handlePreviewPicture, 
+    handleLikeIcon, 
+    deleteConfirmSubmitHandler, 
+    userInfo.getUserId()
+  );
   const cardElement = card.generateCard(item);
 
   return cardElement;
