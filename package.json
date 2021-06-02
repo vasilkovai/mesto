@@ -6,7 +6,6 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack serve",
-    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
@@ -36,6 +35,8 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "core-js": "^3.12.1",
+    "ws": ">=6.2.2",
     "dns-packet": ">=1.3.2"
   }
 }
