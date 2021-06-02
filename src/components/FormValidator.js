@@ -51,8 +51,6 @@ export default class FormValidator {
     }
   };
 
-
-
   //reset error message
   resetValidation() {
     this._inputList.forEach(inputElement => {
